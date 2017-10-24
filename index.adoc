@@ -1,4 +1,4 @@
-:stylesheet: zalando.css
+:stylesheet: dnt.css
 :source-highlighter: coderay
 :toc: macro
 :toclevels: 2
@@ -7,21 +7,19 @@
 :sectnums:
 :sectnumlevels: 1
 
-:creator: Zalando SE
+:creator: DNT
 :producer: Asciidoctor
-:keywords: Zalando, Guidelines, RESTful, API, Events, Schema
+:keywords: DNT, Guidelines, RESTful, API, Events, Schema
 :copyright: CC-BY-SA 3.0
 
 :MUST: pass:[<span class="must-keyword"><strong>Must:</strong></span>]
 :SHOULD: pass:[<span class="should-keyword"><strong>Should:</strong></span>]
 :MAY: pass:[<span class="may-keyword"><strong>May:</strong></span>]
 
-= Zalando RESTful API and Event Scheme Guidelines
-Zalando SE
+= DNT RESTful API and Event Scheme Guidelines
+Den Norske Turistforening / The Norwegian Trekking Association
 
-image::assets/api-zalando-small.jpg[API Guild Logo]
-
-Other formats: link:zalando-guidelines.pdf[PDF], link:zalando-guidelines.epub[EPUB3]
+Other formats: link:dnt-guidelines.pdf[PDF], link:dnt-guidelines.epub[EPUB3]
 
 pass:[<div id="table-of-contents"></div>]
 
