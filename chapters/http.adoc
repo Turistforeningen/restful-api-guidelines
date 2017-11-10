@@ -224,10 +224,6 @@ Method implementations must fulfill the following basic properties:
 |PATCH |No |No
 |=============================
 
-Please see also https://goo.gl/vhwh8a[Best Practices [internal link]]
-for further hints on how to support the different HTTP methods on
-resources.
-
 [#150]
 == {MUST} Use Specific HTTP Status Codes
 
@@ -237,7 +233,7 @@ This guideline groups the following rules for HTTP status codes usage:
 status codes and consistent with its intended semantics.
 * You should use the most specific HTTP status code for your concrete
 resource request processing status or error situation.
-* When using HTTP status codes that are less commonly used and not listed 
+* When using HTTP status codes that are less commonly used and not listed
 below, you must provide good documentation in the API definition.
 
 There are ~60 different HTTP status codes with specific semantics
@@ -372,12 +368,7 @@ object definition — see <<175>>.
 The OpenAPI specification shall include definitions for error
 descriptions that will be returned; they are part of the interface
 definition and provide important information for service clients to
-handle exceptional situations and support troubleshooting. You should
-also think about a troubleshooting board — it is part of the associated
-online API documentation, provides information and handling guidance on
-application-specific errors and is referenced via links of the API
-definition. This can reduce service support tasks and contribute to
-service client and provider performance.
+handle exceptional situations and support troubleshooting.
 
 Service providers should differentiate between technical and functional
 errors. In most cases it's not useful to document technical errors that
