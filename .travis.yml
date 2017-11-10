@@ -1,0 +1,35 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  global:
+    secure: XNqTsSLZvHcEdpivFDgB1jns1n/ZD9R5yFKrYHDOPYsBLxqBGw1UoV1kBriYaO166VVY4iHc5VRwK3sIklgio9XwmwXgAeNYbPgR2fcTeMEBN1H0eez+9OrcYFD5GLxUE/0TawcsQuINNsEUPEaKtX2aB1pDGNhSL3oqf02HCuFGio/EQI1LNlQFN6v+Zmi2A+OeqW+2pkliRq9CrfGDh0fSa6LL3slu1hw5UBrqAtBacLtferz9XmyLJDCKa9N1kMbKEXvi6jamfWygQdFkD5bfPbgFOxb4OPR8SjJ7dXiBB6s80HeTdW0ClGOYXD1PAgrlDjJIfIjQTDWJf/ntF9ZBleUMNx2H2jH/pENsJfyMooaOxIl4M4pCAG0fp6qZHU14JkfoMqw5DUGJobTLRJ0ryNiGyOy4Lz1wjbM90IoVcqbx4LBSFpmIfp58yFcEXrdJQqehYLoiraNz83vYp2qaA4fYtcU7vJ6glyAYZGUwtbnrjr69FWcDqfYiL3kLUyWRv1G8cELrfRskW4ipyAhTu1iL6qKYz/0QEE4n2kiNZ1rSNcBMngMwQnoY3DUsDZd31l6dTxeI+2eKBkO5P3KpCm3J0dMuyM51EqnXkT6LjU4sNpABPuQ76vc6RgYJ/stfWwegQRJj//obTqoHd4kgaNG/uaMC3whanlm20R0=
+
+before_install:
+  - mkdir -p output
+  - docker pull asciidoctor/docker-asciidoctor
+
+script:
+  - ./check_uniqueness_of_rule_ids.sh > rule_id_uniqueness
+  - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -D /documents/output index.adoc
+  - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoc-to-pdf asciidoctor/docker-asciidoctor asciidoctor-pdf -D /documents/output index.adoc
+  - docker run -v $TRAVIS_BUILD_DIR:/documents/ --name asciidoctor-epub3 asciidoctor/docker-asciidoctor asciidoctor-epub3 -D /documents/output index.adoc
+  - cp -r assets output/
+  - mv output/index.pdf output/dnt-guidelines.pdf
+  - mv output/index.epub output/dnt-guidelines.epub
+
+after_error:
+  - docker logs asciidoc-to-html
+  - docker logs asciidoc-to-pdf
+  - docker logs asciidoc-to-epub3
+  - cat rule_id_uniqueness
+
+after_failure:
+  - docker logs asciidoc-to-html
+  - docker logs asciidoc-to-pdf
+  - docker logs asciidoc-to-epub3
+  - cat rule_id_uniqueness
+
+after_success: ./travis_deploy.sh
