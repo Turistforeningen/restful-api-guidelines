@@ -2,7 +2,7 @@
 # This script runs on Travis CI and deploy the generated files to gh-pages branch of the repository iff it's triggered
 # by a merge into the master branch
 
-set -ex
+set -exv
 
 USER="rskaar"
 EMAIL="roar.skaar@gmail.com"
