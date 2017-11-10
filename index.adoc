@@ -17,9 +17,11 @@
 :MAY: pass:[<span class="may-keyword"><strong>May:</strong></span>]
 
 = DNT RESTful API and Event Scheme Guidelines
-Den Norske Turistforening / The Norwegian Trekking Association
+Den Norske Turistforening / The Norwegian Trekking Association / link:https://www.dnt.no/[dnt.no]
 
 Other formats: link:dnt-guidelines.pdf[PDF], link:dnt-guidelines.epub[EPUB3]
+
+Based on the excellent work by link:https://github.com/zalando/restful-api-guidelines[Zalando].
 
 pass:[<div id="table-of-contents"></div>]
 
