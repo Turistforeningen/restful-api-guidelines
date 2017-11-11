@@ -236,7 +236,7 @@ resource request processing status or error situation.
 * When using HTTP status codes that are less commonly used and not listed
 below, you must provide good documentation in the API definition.
 
-There are ~60 different HTTP status codes with specific semantics
+There are 60 different HTTP status codes with specific semantics
 defined in the HTTP standards (mainly
 https://tools.ietf.org/html/rfc7231#section-6[RFC7231] and
 https://tools.ietf.org/html/rfc6585[RFC-6585]) - and there are upcoming
