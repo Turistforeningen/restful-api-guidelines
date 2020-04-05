@@ -34,8 +34,7 @@ for services in a backward-compatible way:
 
 * Add only optional, never mandatory fields.
 * Never change the semantic of fields (e.g. changing the semantic from
-customer-number to customer-id, as both are different unique customer
-keys)
+member-id to user-id, as both are different unique user keys)
 * Input fields may have (complex) constraints being validated via
 server-side business logic. Never change the validation logic to be more
 restrictive and make sure that all constraints a clearly defined in
@@ -230,7 +229,7 @@ release management.
 
 Media type versioning: Here, version information and media type are
 provided together via the HTTP Content-Type header — e.g.
-application/x.zalando.cart+json;version=2. For incompatible changes, a
+application/x.dnt.sherpa+json;version=4. For incompatible changes, a
 new media type version for the resource is created. To generate the new
 representation version, consumer and producer can do content negotiation
 using the HTTP Content-Type and Accept headers. Note: This versioning
@@ -241,7 +240,7 @@ In this example, a client wants only the new version of the response:
 
 [source,http]
 ----
-Accept: application/x.zalando.cart+json;version=2
+Accept: application/x.dnt.sherpa+json;version=4
 ----
 
 A server responding to this, as well as a client sending a request with
@@ -250,7 +249,7 @@ sending the new version:
 
 [source,http]
 ----
-Content-Type: application/x.zalando.cart+json;version=2
+Content-Type: application/x.dnt.sherpa+json;version=4
 ----
 
 Using header versioning should:
@@ -271,9 +270,9 @@ identifier that gets stripped off). Another way would be to document
 just the new version, but let the server accept the old one (with the
 previous content-type).
 
-Further reading: 
-https://blog.apisyouwonthate.com/api-versioning-has-no-right-way-f3c75457c0b7[API Versioning Has No "Right Way"] 
-provides an overview on different versioning approaches to handle breaking changes without being opinionated. 
+Further reading:
+https://blog.apisyouwonthate.com/api-versioning-has-no-right-way-f3c75457c0b7[API Versioning Has No "Right Way"]
+provides an overview on different versioning approaches to handle breaking changes without being opinionated.
 
 [#115]
 == {MUST} Do Not Use URI Versioning
